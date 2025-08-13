@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 public class BasketCalculatorImpl implements BasketCalculator {
     private final String ALLOWED_BASKET_ITEM_APPLE = "apple";
     private final String ALLOWED_BASKET_ITEM_ORANGE = "orange";
@@ -26,7 +28,7 @@ public class BasketCalculatorImpl implements BasketCalculator {
 
         List<String> filteredBasketItems = basketItems.stream().filter(Objects::nonNull)
                 .filter(x -> ( (x.toLowerCase().equals(ALLOWED_BASKET_ITEM_ORANGE))
-                        || (x.toLowerCase().equals(ALLOWED_BASKET_ITEM_APPLE)))).collect(Collectors.toList());
+                        || (x.toLowerCase().equals(ALLOWED_BASKET_ITEM_APPLE)))).collect(toList());
 
         if (filteredBasketItems == null || filteredBasketItems.isEmpty()){
             throw new RuntimeException("Only Apples and oranges are allowed as basket items.");
@@ -36,14 +38,14 @@ public class BasketCalculatorImpl implements BasketCalculator {
         BigDecimal basketValue = BigDecimal.ZERO;
 
         List<String> appleBasketItems = basketItems.stream().filter(Objects::nonNull)
-                .filter(x -> ((x.toLowerCase().equals(ALLOWED_BASKET_ITEM_APPLE)))).collect(Collectors.toList());
+                .filter(x -> ((x.toLowerCase().equals(ALLOWED_BASKET_ITEM_APPLE)))).collect(toList());
 
         if (appleBasketItems != null && (!appleBasketItems.isEmpty())){
             basketValue = basketValue.add(applePriceCalculator.calcPrice(appleBasketItems));
         }
 
         List<String> orangeBasketItems = basketItems.stream().filter(Objects::nonNull)
-                .filter(x -> ((x.toLowerCase().equals(ALLOWED_BASKET_ITEM_ORANGE)))).collect(Collectors.toList());
+                .filter(x -> ((x.toLowerCase().equals(ALLOWED_BASKET_ITEM_ORANGE)))).collect(toList());
 
         if (orangeBasketItems != null && (!orangeBasketItems.isEmpty())){
             basketValue = basketValue.add(orangePriceCalculator.calcPrice(orangeBasketItems));
