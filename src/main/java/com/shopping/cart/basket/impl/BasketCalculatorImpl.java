@@ -13,8 +13,6 @@ import java.util.Objects;
 import static java.util.stream.Collectors.toList;
 
 public class BasketCalculatorImpl implements BasketCalculator {
-    private final String ALLOWED_BASKET_ITEM_APPLE = "apple";
-    private final String ALLOWED_BASKET_ITEM_ORANGE = "orange";
 
     private final PriceCalculator applePriceCalculator = new ApplePriceCalculator();
     private final PriceCalculator orangePriceCalculator = new OrangePriceCalculator();
