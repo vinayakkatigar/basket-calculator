@@ -45,7 +45,7 @@ public class BasketCalculatorImpl implements BasketCalculator {
                 .filter(x -> ((x.toLowerCase().equals(ALLOWED_BASKET_ITEM_ORANGE)))).collect(Collectors.toList());
 
         if (orangeBasketItems != null && (!orangeBasketItems.isEmpty())){
-            basketValue.add(orangePriceCalculator.calcPrice(orangeBasketItems));
+            basketValue = basketValue.add(orangePriceCalculator.calcPrice(orangeBasketItems));
         }
 
         basketValue = basketValue.divide(BigDecimal.valueOf(100d), 2, RoundingMode.HALF_EVEN);

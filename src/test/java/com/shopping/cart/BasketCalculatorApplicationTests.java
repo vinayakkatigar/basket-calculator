@@ -13,6 +13,7 @@ import org.springframework.test.util.AssertionErrors;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static java.math.BigDecimal.valueOf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,6 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class BasketCalculatorApplicationTests {
 
+    public static final String APPLE = "apple";
+    public static final String ORANGE = "orange";
     private static BasketCalculator objectUnderTest;
 
     @BeforeAll
@@ -52,27 +55,52 @@ class BasketCalculatorApplicationTests {
 
 	@Test
 	void testEvenAppleBasketItems() {
-        List<String> basketItems = List.of("apple", "apple");
-        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(BigDecimal.valueOf(0.3)) == 0);
-        basketItems =  List.of("apple", "apple", "apple", "apple");
-        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(BigDecimal.valueOf(0.6)) == 0);
+        List<String> basketItems = List.of(APPLE, APPLE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(0.6)) == 0);
+        basketItems =  List.of(APPLE, APPLE, APPLE, APPLE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.2)) == 0);
 	}
 
 	@Test
 	void testOddAppleBasketItems() {
-        List<String> basketItems = List.of("apple");
-        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(BigDecimal.valueOf(0.6)) == 0);
-        basketItems =  List.of("apple", "apple", "apple");
-        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(BigDecimal.valueOf(0.9)) == 0);
+        List<String> basketItems = List.of(APPLE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(0.6)) == 0);
+        basketItems =  List.of(APPLE, APPLE, APPLE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.2)) == 0);
     }
 
 	@Test
 	void testOnlyOrangeBasketItems() {
-        AssertionErrors.fail("To-Do");
-	}
+        List<String> basketItems = List.of(ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(0.25)) == 0);
+        basketItems =  List.of(ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(0.50)) == 0);
+        basketItems =  List.of(ORANGE, ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(0.50)) == 0);
+        basketItems =  List.of(ORANGE, ORANGE, ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(0.75)) == 0);
+        basketItems =  List.of(ORANGE, ORANGE, ORANGE, ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.0)) == 0);
+        basketItems =  List.of(ORANGE, ORANGE, ORANGE, ORANGE, ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.0)) == 0);
+    }
+    
 	@Test
 	void testAppleAndOrangeBasketItems() {
-        AssertionErrors.fail("To-Do");
-	}
+        List<String> basketItems = List.of(APPLE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(0.85)) == 0);
+        basketItems =  List.of(APPLE, APPLE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(0.85)) == 0);
+        basketItems =  List.of(APPLE, APPLE, APPLE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.45)) == 0);
+        basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.7)) == 0);
+        basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.7)) == 0);
+        basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE, ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.95)) == 0);
+        basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE, ORANGE, ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(2.8)) == 0);
+    }
 
 }

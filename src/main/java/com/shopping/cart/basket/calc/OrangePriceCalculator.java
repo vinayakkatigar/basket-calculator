@@ -3,8 +3,26 @@ package com.shopping.cart.basket.calc;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static java.math.BigDecimal.valueOf;
+
 public class OrangePriceCalculator {
+    public static double price = 25;
+    public static double discountRate = 2;
+
     public BigDecimal calcPrice(List<String> orangeBasketItems) {
-        return null;
+        int itemsSize = orangeBasketItems.size();
+        if (itemsSize > 0 ){
+            if (itemsSize % 3 == 0 ){
+                return valueOf((itemsSize / 3) * price * discountRate);
+            }else if (itemsSize > 3){
+                int remainderOfThree = itemsSize % 3;
+                return valueOf((itemsSize / 3) * price * discountRate)
+                        .add(valueOf((remainderOfThree * price)));
+            }else {
+                return valueOf((itemsSize) * price );
+            }
+
+        }
+        return BigDecimal.ZERO;
     }
 }
