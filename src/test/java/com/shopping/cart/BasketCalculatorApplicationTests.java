@@ -84,7 +84,7 @@ class BasketCalculatorApplicationTests {
         basketItems =  List.of(ORANGE, ORANGE, ORANGE, ORANGE, ORANGE, ORANGE);
         assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.0)) == 0);
     }
-    
+
 	@Test
 	void testAppleAndOrangeBasketItems() {
         List<String> basketItems = List.of(APPLE, ORANGE);
@@ -100,6 +100,8 @@ class BasketCalculatorApplicationTests {
         basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE, ORANGE, ORANGE);
         assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.95)) == 0);
         basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE, ORANGE, ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(2.8)) == 0);
+        basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE, ORANGE, ORANGE, ORANGE, "grapes");
         assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(2.8)) == 0);
     }
 
