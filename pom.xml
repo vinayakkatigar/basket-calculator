@@ -12,11 +12,8 @@
 	<artifactId>basket-calculator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>basket-calculator</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Shopping Cart basket </description>
 	<url/>
-	<licenses>
-		<license/>
-	</licenses>
 	<developers>
 		<developer/>
 	</developers>
