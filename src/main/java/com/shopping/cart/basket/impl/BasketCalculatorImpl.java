@@ -1,8 +1,9 @@
 package com.shopping.cart.basket.impl;
 
 import com.shopping.cart.basket.BasketCalculator;
-import com.shopping.cart.basket.calc.ApplePriceCalculator;
-import com.shopping.cart.basket.calc.OrangePriceCalculator;
+import com.shopping.cart.basket.calc.PriceCalculator;
+import com.shopping.cart.basket.calc.impl.ApplePriceCalculator;
+import com.shopping.cart.basket.calc.impl.OrangePriceCalculator;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -14,8 +15,8 @@ public class BasketCalculatorImpl implements BasketCalculator {
     private final String ALLOWED_BASKET_ITEM_APPLE = "apple";
     private final String ALLOWED_BASKET_ITEM_ORANGE = "orange";
 
-    private final ApplePriceCalculator applePriceCalculator = new ApplePriceCalculator();
-    private final OrangePriceCalculator orangePriceCalculator = new OrangePriceCalculator();
+    private final PriceCalculator applePriceCalculator = new ApplePriceCalculator();
+    private final PriceCalculator orangePriceCalculator = new OrangePriceCalculator();
 
     @Override
     public BigDecimal calulateBasketValue(List<String> basketItems) {

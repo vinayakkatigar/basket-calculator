@@ -1,11 +1,13 @@
-package com.shopping.cart.basket.calc;
+package com.shopping.cart.basket.calc.impl;
+
+import com.shopping.cart.basket.calc.PriceCalculator;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import static java.math.BigDecimal.valueOf;
 
-public class OrangePriceCalculator {
+public class OrangePriceCalculator implements PriceCalculator {
     public static double price = 25;
     public static double threeForTwoDiscountRate = 2;
 
