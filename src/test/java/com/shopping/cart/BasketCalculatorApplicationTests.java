@@ -95,6 +95,8 @@ class BasketCalculatorApplicationTests {
         assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.45)) == 0);
         basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE);
         assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.7)) == 0);
+        basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE, ORANGE);
+        assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(2.3)) == 0);
         basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE, ORANGE);
         assertTrue(objectUnderTest.calulateBasketValue(basketItems).compareTo(valueOf(1.7)) == 0);
         basketItems =  List.of(APPLE, APPLE, APPLE, APPLE, ORANGE, ORANGE, ORANGE, ORANGE);
